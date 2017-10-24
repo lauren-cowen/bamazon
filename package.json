@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "This application allows customers to select an item to purhcase.",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurenc234/bamazon.git"
+  },
+  "author": "Lauren Cowen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurenc234/bamazon/issues"
+  },
+  "homepage": "https://github.com/laurenc234/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0",
+    "mysql": "^2.15.0"
+  }
+}
