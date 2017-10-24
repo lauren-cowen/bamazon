@@ -47,7 +47,6 @@ var checkQuantity = function(productID, quantity) {
 		if(results[0].stock_quantity >= quantity) {
 			var totalPrice = results[0].price*quantity;
 			var newQuantity = results[0].stock_quantity - quantity;
-			console.log("new quantity: " + results[0].stock_quantity)
 			completePurchase(productID, newQuantity, totalPrice);
 		}
 
@@ -70,7 +69,6 @@ var completePurchase = function(productID, quantity, totalPrice) {
 	], function(error, result){
 		if(error) throw error;
 		console.log("Total Price: $" + totalPrice.toFixed(2));
-		 console.log(result.affectedRows + " products updated!\n");
 		connection.end();
 	})
 
