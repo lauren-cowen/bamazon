@@ -1,5 +1,6 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
+var Table = require('cli-table');
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -40,11 +41,16 @@ var viewInventory = function(callback) {
     connection.connect();
     connection.query('SELECT * FROM products', function(error, results) {
         if (error) throw error;
-        console.log("Item ID  Product Name  Price Stock Quantity");
-        console.log("--------------------------------");
+       var table = new Table({
+        head: ['Item ID', 'Product Name', 'Price', 'Stock'],
+        colWidths: [10, 20, 10, 10]
+    });
         for (i = 0; i < results.length; i++) {
-            console.log(results[i].item_id + "    " + results[i].product_name + "       $" + results[i].price.toFixed(2) + "   " + results[i].stock_quantity);
-        }
+        table.push(
+            [results[i].item_id, results[i].product_name, '$' + results[i].price, results[i].stock_quantity]
+        );
+    }
+    console.log(table.toString());
 
         if (typeof callback === "function") {
             callback();
@@ -58,11 +64,16 @@ var viewLowInventory = function() {
 
     connection.query('SELECT * FROM products WHERE stock_quantity<5', function(error, results) {
         if (error) throw error;
-        console.log("Item ID  Product Name  Price Stock Quantity");
-        console.log("--------------------------------");
-        for (i = 0; i < results.length; i++) {
-            console.log(results[i].item_id + "    " + results[i].product_name + "       $" + results[i].price.toFixed(2) + "   " + results[i].stock_quantity);
-        }
+        var table = new Table({
+        head: ['Item ID', 'Product Name', 'Price', 'Stock'],
+        colWidths: [10, 20, 10, 10]
+    });
+         for (i = 0; i < results.length; i++) {
+        table.push(
+            [results[i].item_id, results[i].product_name, '$' + results[i].price, results[i].stock_quantity]
+        );
+    }
+    console.log(table.toString());
 
     })
     connection.end();
