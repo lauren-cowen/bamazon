@@ -19,7 +19,7 @@ connection.query('SELECT * FROM products', function(error, results) {
 
     for (i = 0; i < results.length; i++) {
         table.push(
-            [results[i].item_id, results[i].product_name, '$' + results[i].price]
+            [results[i].item_id, results[i].product_name, '$' + results[i].price.toFixed(2)]
         );
     }
     console.log(table.toString());

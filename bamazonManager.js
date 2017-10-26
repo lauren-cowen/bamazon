@@ -47,7 +47,7 @@ var viewInventory = function(callback) {
     });
         for (i = 0; i < results.length; i++) {
         table.push(
-            [results[i].item_id, results[i].product_name, '$' + results[i].price, results[i].stock_quantity]
+            [results[i].item_id, results[i].product_name, '$' + results[i].price.toFixed(2), results[i].stock_quantity]
         );
     }
     console.log(table.toString());
@@ -70,7 +70,7 @@ var viewLowInventory = function() {
     });
          for (i = 0; i < results.length; i++) {
         table.push(
-            [results[i].item_id, results[i].product_name, '$' + results[i].price, results[i].stock_quantity]
+            [results[i].item_id, results[i].product_name, '$' + results[i].price.toFixed(2), results[i].stock_quantity]
         );
     }
     console.log(table.toString());
